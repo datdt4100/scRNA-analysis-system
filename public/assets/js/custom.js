@@ -40,9 +40,9 @@
 		top: 100,
 		overlay: 0.6,
 		closeButton: ".modal_close"
-});
+  });
 
-$(function() {
+  $(function() {
 		// Calling Login Form
 		$("#login_form").click(function() {
 				$(".social_login").hide();
@@ -66,7 +66,7 @@ $(function() {
 				$(".header_title").text('Login');
 				return false;
 		});
-});
+  });
 
 	// Menu Dropdown Toggle
   if($('.menu-trigger').length){
@@ -139,7 +139,7 @@ $(function() {
 
   // Acc
   $(document).on("click", ".naccs .menu div", function() {
-    //var numberIndex = $(this).index();
+    $("#exec_btn").prop('disabled', false);
 
     if (!$(this).is("active")) {
         $(".naccs .menu div").removeClass("active");
@@ -177,7 +177,29 @@ $(function() {
     });
   }
 
-
-
-
 })(window.jQuery);
+
+$(document).ready(function() {
+  $("#fileUpload").submit(function(e) {
+      console.log('hear');
+      $('#upfile_popup').modal('toggle');
+      //e.preventDefault();
+      var data = new FormData($('#fileUpload')[0]);
+      /*
+      $.ajax({
+          url:'/upload',
+          type: 'POST',
+          contentType: false,
+          processData: false,
+          cache: false,
+          data: data,
+          success: function(res){
+              alert(res);
+              $('#upfile_popup').modal('toggle');
+          },
+          error: function(){
+              alert('Error: In sending the request!');
+          }
+      })*/
+  });
+});

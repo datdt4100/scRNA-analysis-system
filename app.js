@@ -2,15 +2,24 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+const bodyParser = require("body-parser");
 var logger = require('morgan');
+const handlebars = require('express-handlebars');
+const hbs = handlebars.create({extname: '.hbs'})
 
 var appRouter = require('./routes/index');
 
 var app = express();
 
 // view engine setup
+app.engine('handlebars', hbs.engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 
 appRouter(app);
 

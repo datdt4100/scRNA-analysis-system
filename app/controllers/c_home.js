@@ -1,7 +1,8 @@
 class Home {
     index(req, res) {
-        res.render('home', {layout: 'main.hbs'}); // trả về view/dangnhap với layout là login_layout
+        res.render('home', {layout: 'main.hbs'});
     }
+
 }
 
 module.exports = new Home;
