@@ -10,6 +10,10 @@ class Visualization {
         })
         .catch((err) => res.render('dataset_selection', {layout: 'main.hbs', exist_data:false, data:null, TASK:task, desc:desc, can_use:true, action:"Visualize"}));
     }
+    visualize(req, res){        
+        var data = JSON.parse(JSON.stringify(req.body))
+        
+    }
 }
 
 module.exports = new Visualization;

@@ -143,16 +143,7 @@
 
     if (!$(this).is("active")) {
         $(".naccs .menu div").removeClass("active");
-        //$(".naccs ul li").removeClass("active");
-
         $(this).addClass("active");
-        //$(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active");
-
-        /*var listItemHeight = $(".naccs ul")
-          .find("li:eq(" + numberIndex + ")")
-          .innerHeight();
-        $(".naccs ul").height(listItemHeight + "px");
-        */
       }
   });
 
@@ -181,25 +172,63 @@
 
 $(document).ready(function() {
   $("#fileUpload").submit(function(e) {
-      console.log('hear');
-      $('#upfile_popup').modal('toggle');
-      //e.preventDefault();
-      var data = new FormData($('#fileUpload')[0]);
-      /*
-      $.ajax({
-          url:'/upload',
-          type: 'POST',
-          contentType: false,
-          processData: false,
-          cache: false,
-          data: data,
-          success: function(res){
-              alert(res);
-              $('#upfile_popup').modal('toggle');
-          },
-          error: function(){
-              alert('Error: In sending the request!');
-          }
-      })*/
+    e.preventDefault();
+    var data = new FormData($('#fileUpload')[0]);
+    $.ajax({
+      url:'/file_upload',
+      type: 'POST',
+      contentType: false,
+      processData: false,
+      cache: false,
+      data: data,
+      success: function(res){
+        $('#upfile_popup').css('display', 'none');
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+        //$('#upfile_popup').modal('toggle');
+        var dsname = $('#InputName').val();
+        dsname = dsname.charAt(0).toUpperCase() + dsname.slice(1);
+        var dsfilename = document.getElementById('attached_file').files[0].name;
+        var dstissue = $('#InputTissue').val();
+        var dsyear = $('#InputYear').val();
+        if (dsyear == ''){
+          dsyear = new Date().getFullYear();
+        }
+        $('#fileUpload').each(function(){
+          this.reset();
+        });
+        $(".naccs .menu div").removeClass("active");
+        document.getElementById('ds_list').innerHTML = '<div class="active"><div class="thumb"><div class="row"><div class="col-lg-4 col-sm-4 col-12"><h4 name="' + dsfilename+ '">'+
+        dsname +'</h4><span class="status">available</span></div><div class="col-lg-4 col-sm-4 d-none d-sm-block"><span class="category">'+ dstissue +'</span></div><div class="col-lg-4 col-sm-4 col-12"><h4>'+dsyear+'</h4></div></div></div></div>' + document.getElementById('ds_list').innerHTML;
+        $("#exec_btn").prop('disabled', false);
+      },
+      error: function(){
+        alert('Error: In sending the request!');
+      }
+    })
+    return false;
   });
 });
+
+$("#exec_btn").click(function(){
+  var select = $(".naccs .menu div.active");
+  if (select.length > 0){
+    var filename = select.find('h4').attr('name');
+    url = $(location).attr('href');
+    url = url.substring(0, url.length) + '/result';
+    //$(location).attr('href', url);
+    var data = {};
+    data.filename = filename;
+    console.log(data);
+    $.ajax({
+      type: 'POST',
+      data: JSON.stringify(data),
+      contentType: 'application/json',
+      url: url,						
+      success: function(data) {
+          console.log('success');
+          console.log(JSON.stringify(data));
+      }
+  });
+  }
+})

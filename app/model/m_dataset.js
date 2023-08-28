@@ -11,6 +11,9 @@ class Dataset extends Database {
             });
         });
     }
+    update_dataset(file_dict){
+        return false;
+    }
 }
 
 module.exports = new Dataset();
