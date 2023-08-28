@@ -33,7 +33,9 @@ node install_R_package.js
 ```bash
 npm start
 ```
-- Then access the link http://localhost:3000/ to enjoy the app. There are four functionalities for you to try. 
+- Then access the link http://localhost:3000/ to enjoy the app. 
+- First, you can click to publication to read more our publication of thes four analysis techniques.
+- There are four functionalities in the web for you to try. 
 - After select once of them, you should choose your dataset, which is available. Some of dataset is unavailable and will be updated later.
 - In the step of adding the dataset, some information is require such as Name, the Tissue of the dataset and the dataset file with format of Tab Seperate Delimiter (tsv). The metadata file and published year of dataset is optional. However the function of attached the metadata file is still exist some problem.
 - After selecting the dataset, you are able to execute the analysis technique, the result will be given below. However, this function is updating. 
