@@ -48,7 +48,12 @@ node run_demo.js
 - A detailed tutorial on how to use scDHA package is available at http://scdha.tinnguyen-lab.com/  
   Or, a vignette in R Notebook format is available [here](https://github.com/duct317/scDHA/blob/master/vignettes/Example.Rmd)
 
+* Screen shot of the publication page:
+
 ![Screen shot of the publication](https://github.com/trandat04102000/scRNA-analysis-system/blob/main/data/publication_screenshot.png)
+
+* Screen shot of the dataset selection:
+
 ![Screen shot of the dataset selection](https://github.com/trandat04102000/scRNA-analysis-system/blob/main/data/dataset_screenshot.png)
 
 # How to use the package for new data 
