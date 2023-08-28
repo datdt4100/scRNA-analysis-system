@@ -3,7 +3,7 @@
 # Introduction
 This is an online tool for single cell RNA sequencing analysis. There are four techniques including: cell clustering, trajectory inference, and visualization. User can use built-in dataset (Goolam) or update their own dataset. If the user's consent is received, the dataset will be updated to our corpus and made public. However, this web application is still not complete. It just perform until the step of uploading the data.
 
-()
+[Screenshot of the app](https://github.com/trandat04102000/scRNA-analysis-system/blob/main/data/screenshot.png)
 
 # Component
 - NodeJS.
