@@ -10,12 +10,13 @@ data <- log2(data + 1)
 
 #Generate clustering result, the input matrix has rows as samples and columns as genes
 result <- scDHA(data, seed = 1)
-
+print("Demo of clustering:")
 #The clustering result can be found here 
 cluster <- result$cluster
 
 #Calculate adjusted Rand Index using mclust package
 ari <- round(mclust::adjustedRandIndex(cluster,label), 2)
+print("Calculate adjusted Rand Index using mclust package");
 print(paste0("ARI = ", ari))
 
 #Generate 2D representation, the input is the output from scDHA function
@@ -52,5 +53,8 @@ test.x <- data[-idx, ]; test.y <- label[-idx]
 prediction <- scDHA.class(train = train.x, train.label = train.y, test = test.x, seed = 1)
 
 #Calculate accuracy of the predictions
+print("Demo the accuracy of classification method:")
 acc <- round(sum(test.y == prediction)/length(test.y), 2)
 print(paste0("Accuracy = ", acc))
+
+print("The demo of visualization and time inference are giving the result in Rplots.pdf file.")
