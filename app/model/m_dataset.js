@@ -12,7 +12,14 @@ class Dataset extends Database {
         });
     }
     update_dataset(file_dict){
-        return false;
+        console.log('here');
+        var statement = "INSERT INTO `dataset`(`name`, `filename`, `tissue`, `publish_year`, `status`) VALUES ('"+ file_dict.datasetname +"','"+file_dict.filename+"','"+file_dict.tissue+"',"+file_dict.year+",'"+file_dict.status+"');"
+        return new Promise((resolve, reject) => {
+            this.conn.query(statement, (err, rows) => {
+                if (err) return reject(err);
+                resolve(JSON.stringify(rows));
+            });
+        });
     }
 }
 

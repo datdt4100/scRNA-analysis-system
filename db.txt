@@ -1,1 +1,4 @@
-CREATE TABLE `scrna_sys`. (`id` INT(100) NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NULL DEFAULT NULL , `filename` VARCHAR(255) NULL DEFAULT NULL, `meta_filename` VARCHAR(255) NULL DEFAULT NULL , `tissue` VARCHAR(255) NULL DEFAULT NULL , `publish_year` YEAR(4) NOT NULL DEFAULT CURRENT_TIMESTAMP , `status` ENUM('available', 'unavailable') NULL DEFAULT 'unavailable' , UNIQUE `id` (`id`)) ENGINE = InnoDB;
+CREATE TABLE `scrna_sys`.`dataset` (`id` INT(100) NOT NULL AUTO_INCREMENT , `name` VARCHAR(255) NULL DEFAULT NULL , `filename` VARCHAR(255) NULL DEFAULT NULL, `meta_filename` VARCHAR(255) NULL DEFAULT NULL , `tissue` VARCHAR(255) NULL DEFAULT NULL , `publish_year` YEAR(4) NOT NULL DEFAULT CURRENT_TIMESTAMP , `status` ENUM('available', 'unavailable') NULL DEFAULT 'unavailable' , UNIQUE `id` (`id`)) ENGINE = InnoDB;
+INSERT INTO `dataset`(`name`, `filename`, `tissue`, `publish_year`, `status`) VALUES ('Goolam','Goolam.rda','Mouse embryo',2016,'available');
+INSERT INTO `dataset`(`name`, `tissue`, `publish_year`) VALUES ('Yan','Human embryo',2013);
+INSERT INTO `dataset`(`name`, `tissue`, `publish_year`) VALUES ('Darmanis','Human brain',2015);

@@ -7,7 +7,7 @@ class Database{
 			host: '127.0.0.1',
 			user: 'root',
 			password: '',
-			database: 'scrna_sys', //tên csdl
+			database: 'scrna_sys',
             multipleStatements: true,
 			debug: false
 		});

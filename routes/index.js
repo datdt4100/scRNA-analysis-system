@@ -6,7 +6,7 @@ const visualization = require('./r_visualization');
 const clustering = require('./r_clustering');
 const classification = require('./r_classification');
 const inference = require('./r_inference');
-//const dataset = require('../app/controllers/c_dataUpload');
+const dataset = require('../app/controllers/c_dataUpload');
 
 storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -48,8 +48,13 @@ function route(app) {
       res.render('publication_viewer', {layout: 'main.hbs'});
   });
   app.post('/file_upload', upload.single('file'), function(req, res) {
-    console.log("Start here\n");
-    console.log(req.body);
+    var data_dict = JSON.parse(JSON.stringify(req.body))
+    if (!data_dict.private){
+      data_dict.filename = req.file.originalname;
+      data_dict.status = 'available';
+      console.log(data_dict);
+      dataset.update(data_dict);
+    }
     const file = req.file;
     console.log(file);
     res.sendStatus(200);

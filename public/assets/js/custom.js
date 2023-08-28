@@ -174,6 +174,7 @@ $(document).ready(function() {
   $("#fileUpload").submit(function(e) {
     e.preventDefault();
     var data = new FormData($('#fileUpload')[0]);
+    
     $.ajax({
       url:'/file_upload',
       type: 'POST',
@@ -201,6 +202,8 @@ $(document).ready(function() {
         document.getElementById('ds_list').innerHTML = '<div class="active"><div class="thumb"><div class="row"><div class="col-lg-4 col-sm-4 col-12"><h4 name="' + dsfilename+ '">'+
         dsname +'</h4><span class="status">available</span></div><div class="col-lg-4 col-sm-4 d-none d-sm-block"><span class="category">'+ dstissue +'</span></div><div class="col-lg-4 col-sm-4 col-12"><h4>'+dsyear+'</h4></div></div></div></div>' + document.getElementById('ds_list').innerHTML;
         $("#exec_btn").prop('disabled', false);
+
+        $('#fileUpload')[0].reset();
       },
       error: function(){
         alert('Error: In sending the request!');
