@@ -3,7 +3,7 @@
 # Introduction
 This is an online tool for single cell RNA sequencing analysis. There are four techniques including: cell clustering, trajectory inference, classification and visualization. User can use built-in dataset (Goolam) or update their own dataset. If the user's consent is received, the dataset will be updated to our corpus and made public. However, this web application is still not complete. It just perform until the step of uploading the data and I also perform a demo of these for techniques with the Goolam dataset in javascript code.
 
-![Screenshot of the app](https://github.com/trandat04102000/scRNA-analysis-system/blob/main/data/screenshot.png)
+![Screenshot of the app](https://github.com/trandat04102000/scRNA-analysis-system/blob/main/data/home_screenshot.png)
 
 # Component
 - NodeJS for runtime environment.
@@ -47,6 +47,9 @@ node run_demo.js
 
 - A detailed tutorial on how to use scDHA package is available at http://scdha.tinnguyen-lab.com/  
   Or, a vignette in R Notebook format is available [here](https://github.com/duct317/scDHA/blob/master/vignettes/Example.Rmd)
+
+![Screen shot of the publication](https://github.com/trandat04102000/scRNA-analysis-system/blob/main/data/publication_screenshot.png)
+![Screen shot of the dataset selection](https://github.com/trandat04102000/scRNA-analysis-system/blob/main/data/dataset_screenshot.png)
 
 # How to use the package for new data 
 To use our package for new data, the package includes these functions:  
