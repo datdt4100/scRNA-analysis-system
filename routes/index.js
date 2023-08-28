@@ -53,7 +53,7 @@ function route(app) {
     const file = req.file;
     console.log(file);
     res.sendStatus(200);
-  });  
+  });
 }
 
 module.exports = route;

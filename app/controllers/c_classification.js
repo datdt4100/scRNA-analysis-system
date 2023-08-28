@@ -10,6 +10,10 @@ class Classification {
         })
         .catch((err) => res.render('dataset_selection', {layout: 'main.hbs', exist_data:false, data:null, TASK:task, desc:desc, can_use:false, action:"Classify"}));
     }
+    classify(req, res){        
+        var data = JSON.parse(JSON.stringify(req.body));
+        res.render('result', {layout:'main.hbs', task:'Cell Classification'});
+    }
 }
 
 module.exports = new Classification;

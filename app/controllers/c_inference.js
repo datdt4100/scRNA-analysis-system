@@ -10,6 +10,10 @@ class Inference {
         })
         .catch((err) => res.render('dataset_selection', {layout: 'main.hbs', exist_data:false, data:null, TASK:task, desc:desc, can_use:true, action:"Infer"}));
     }
+    infer(req, res){        
+        var data = JSON.parse(JSON.stringify(req.body));
+        res.render('result', {layout:'main.hbs', task:'Pseudo-time Inference'});
+    }
 }
 
 module.exports = new Inference;

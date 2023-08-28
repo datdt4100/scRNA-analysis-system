@@ -1,6 +1,9 @@
 var dataset = require('../model/m_dataset')
 
 class Visualization {
+    constructor(){
+        this.file = null;
+    }
     index(req, res) {
         var task = "Transcriptome Landscape Visualization";
         var desc = "Computational methods in this category aim at representing the high-dimensional scRNA-seq data in a low dimensional space while preserving the relevant structure of the data.";
@@ -10,10 +13,12 @@ class Visualization {
         })
         .catch((err) => res.render('dataset_selection', {layout: 'main.hbs', exist_data:false, data:null, TASK:task, desc:desc, can_use:true, action:"Visualize"}));
     }
-    visualize(req, res){        
-        var data = JSON.parse(JSON.stringify(req.body))
-        
+    exec(req, res){
+        var file = JSON.parse(JSON.stringify(req.body));
+        //this.file = file;
+        //console.log(this.file);
+        res.send(req.body);
     }
 }
 
-module.exports = new Visualization;
+module.exports = new Visualization();

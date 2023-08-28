@@ -215,20 +215,31 @@ $("#exec_btn").click(function(){
   if (select.length > 0){
     var filename = select.find('h4').attr('name');
     url = $(location).attr('href');
-    url = url.substring(0, url.length) + '/result';
-    //$(location).attr('href', url);
+    url = url.substring(0, url.length) + '/exec';
     var data = {};
     data.filename = filename;
-    console.log(data);
+    //url = url+ "/?file="  + filename;
+    //$(location).attr('href', url);
+    //window.location.href =  url+ "?file="  + filename
+    
     $.ajax({
       type: 'POST',
       data: JSON.stringify(data),
       contentType: 'application/json',
       url: url,						
       success: function(data) {
-          console.log('success');
-          console.log(JSON.stringify(data));
+        var html = $(".container .col-lg-12").html();
+        html += '<div class="container-title" ><div class="title"><h5 class="heading">Result:</h5></div></div>';
+        html += '<div class="naccs"><div class="grid"><div class="row"><div class="col-lg-12 align-self-center">Updating' + JSON.stringify(data) + '</div></div></div>';
+        $(".container .col-lg-12").html(html);
+        /*
+        var curr_html = 
+        $(".container-title .title").html('<h5 class="heading">Result:</h5>');
+        $(".naccs .row .col-lg-12").html('<div>updating</div>');*/
+        console.log('success');
+        //$(location).attr('href', url);
+        console.log(JSON.stringify(data));
       }
-  });
+    });
   }
 })

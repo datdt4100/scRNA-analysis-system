@@ -1,4 +1,4 @@
 const R = require('r-integration');
 
-let result = R.executeRScript("./init.R");
+result = R.executeRScript("checkTSV.r");
 print(result);
